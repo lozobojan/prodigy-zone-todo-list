@@ -1,16 +1,21 @@
 var taskCount = 0;
+var tasks = [{}];
 
 function saveTask(){
-    let taskName = document.getElementById('taskName').value;
-    let taskDeadline = document.getElementById('taskDeadline').value;
-    let taskPriority = document.getElementById('taskPriority').value;
+    let task = {
+        "name": document.getElementById('taskName').value,
+        "deadline": document.getElementById('taskDeadline').value,
+        "priority": document.getElementById('taskPriority').value
+    }
 
+    tasks.push(task);
     taskCount++;
+
     let newRow = '<tr id="task'+taskCount+'">'
                         + '<td> <input type="checkbox" onchange="markTask('+taskCount+')"> </td>'
-                        + '<td>'+ taskName + '</td>'
-                        + '<td>'+taskDeadline+'</td>'
-                        + '<td>'+taskPriority+'</td>'
+                        + '<td>'+ task.name + '</td>'
+                        + '<td>'+ task.deadline +'</td>'
+                        + '<td>'+ task.priority +'</td>'
                 + '</tr>';
 
     document.getElementById('tasksTableBody').innerHTML += newRow;
